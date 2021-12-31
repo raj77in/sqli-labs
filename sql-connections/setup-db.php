@@ -29,20 +29,20 @@ include("../sql-connections/db-creds.inc");
 $con = mysqli_connect($host,$dbuser,$dbpass);
 if (!$con)
   {
-  die('[*]...................Could not connect to DB, check the creds in db-creds.inc: ' . mysql_error());
+  die('[*]...................Could not connect to DB, check the creds in db-creds.inc: ' . mysqli_error());
   }
 
 
 
 
-//@mysql_select_db('mysql',$con)	
+//@mysqli_select_db('mysql',$con)	
 	
 //purging Old Database	
 	$sql="DROP DATABASE IF EXISTS security";
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Old database 'SECURITY' purged if exists"; echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error purging database: " . mysql_error(); echo "<br><br>\n";}
+		{echo "[*]...................Error purging database: " . mysqli_error(); echo "<br><br>\n";}
 
 
 //Creating new database security
@@ -50,14 +50,14 @@ if (!$con)
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New database 'SECURITY' successfully";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error creating database: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error creating database: " . mysqli_error();echo "<br><br>\n";}
 
 //creating table users
 $sql="CREATE TABLE security.users (id int(3) NOT NULL AUTO_INCREMENT, username varchar(20) NOT NULL, password varchar(20) NOT NULL, PRIMARY KEY (id))";
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New Table 'USERS' successfully";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error creating Table: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error creating Table: " . mysqli_error();echo "<br><br>\n";}
 
 
 //creating table emails
@@ -70,7 +70,7 @@ $sql="CREATE TABLE security.emails
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New Table 'EMAILS' successfully"; echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error creating Table: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error creating Table: " . mysqli_error();echo "<br><br>\n";}
 
 
 
@@ -86,7 +86,7 @@ $sql="CREATE TABLE security.uagents
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New Table 'UAGENTS' successfully";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error creating Table: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error creating Table: " . mysqli_error();echo "<br><br>\n";}
 
 
 //creating table referers
@@ -100,7 +100,7 @@ $sql="CREATE TABLE security.referers
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New Table 'REFERERS' successfully";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error creating Table: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error creating Table: " . mysqli_error();echo "<br><br>\n";}
 
 
 
@@ -113,7 +113,7 @@ $sql="INSERT INTO security.users (id, username, password) VALUES ('1', 'Dumb', '
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Inserted data correctly into table 'USERS'";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error inserting data: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error inserting data: " . mysqli_error();echo "<br><br>\n";}
 
 
 
@@ -122,7 +122,7 @@ $sql="INSERT INTO `security`.`emails` (id, email_id) VALUES ('1', 'Dumb@dhakkan.
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Inserted data correctly  into table 'EMAILS'";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error inserting data: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error inserting data: " . mysqli_error();echo "<br><br>\n";}
 
 
 

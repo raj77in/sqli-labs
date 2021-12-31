@@ -15,7 +15,7 @@ $id = $_GET['id'];
 @$con = mysqli_connect($host,$dbuser,$dbpass);
 if (!$con)
 {
-    echo "Failed to connect to MySQL: " . mysql_error();
+    echo "Failed to connect to MySQL: " . mysqli_error();
 }
 
 
@@ -24,7 +24,7 @@ if (!$con)
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Old database purged if exists"; echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error purging database: " . mysql_error(); echo "<br><br>\n";}
+		{echo "[*]...................Error purging database: " . mysqli_error(); echo "<br><br>\n";}
 
 
 
@@ -34,7 +34,7 @@ if (!$con)
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New database successfully";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error creating database: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error creating database: " . mysqli_error();echo "<br><br>\n";}
 
 include '../sql-connections/functions.php';
 
@@ -51,7 +51,7 @@ $sql="CREATE TABLE IF NOT EXISTS $dbname1.$table
 	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New Table '$table' successfully";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error creating Table: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error creating Table: " . mysqli_error();echo "<br><br>\n";}
 
 
 // creating random key
@@ -64,7 +64,7 @@ $sql="INSERT INTO $dbname1.$table VALUES (1, '$hash', '$sec_key', 0)";
         if (mysqli_query($con,$sql))
 		{echo "[*]...................Inserted data correctly  into table '$table'";echo "<br><br>\n";}
 	else 
-		{echo "[*]...................Error inserting data: " . mysql_error();echo "<br><br>\n";}
+		{echo "[*]...................Error inserting data: " . mysqli_error();echo "<br><br>\n";}
 
 echo "[*]...................Inserted secret key '$secret_key' into table ";echo "<br><br>\n";
 

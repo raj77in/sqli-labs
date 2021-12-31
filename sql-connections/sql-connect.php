@@ -7,11 +7,11 @@ include("../sql-connections/db-creds.inc");
 // Check connection
 if (!$con)
 {
-    echo "Failed to connect to MySQL: " . mysql_error();
+    echo "Failed to connect to MySQL: " . mysqli_error();
 }
 
 
-    @mysql_select_db($dbname,$con) or die ( "Unable to connect to the database: $dbname");
+    @mysqli_select_db($con, $dbname) or die ( "Unable to connect to the database: $dbname");
 
 
 

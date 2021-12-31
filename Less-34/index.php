@@ -67,7 +67,7 @@ if(isset($_POST['uname']) && isset($_POST['passwd']))
 	mysqli_query($con,"SET NAMES gbk");
 	@$sql="SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
 	$result=mysqli_query($con,$sql);
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 
 	if($row)
 	{
@@ -93,7 +93,7 @@ if(isset($_POST['uname']) && isset($_POST['passwd']))
 	{
 		echo '<font color= "#0000ff" font size="3">';
 		//echo "Try again looser";
-		print_r(mysql_error());
+		print_r(mysqli_error());
 		echo "</br>";
 		echo "</br>";
 		echo "</br>";
