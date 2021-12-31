@@ -83,7 +83,7 @@ fclose($fp);
 // connectivity 
 @$sql="SELECT username, password FROM users WHERE username= $uname LIMIT 0,1";
 
-$result=mysql_query($sql);
+$result=mysqli_query($con,$sql);
 $row = mysql_fetch_array($result);
 //echo $row;
 	if($row)
@@ -92,7 +92,7 @@ $row = mysql_fetch_array($result);
 		$row1 = $row['username'];  	
 		//echo 'Your Login name:'. $row1;
 		$update="UPDATE users SET password = '$passwd' WHERE username='$row1'";
-		mysql_query($update);
+		mysqli_query($con,$update);
   		echo "<br>";
 	
 	

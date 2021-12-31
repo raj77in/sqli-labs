@@ -29,7 +29,7 @@ fclose($fp);
 
 
 $sql="SELECT * FROM users WHERE id=(('$id')) LIMIT 0,1";
-$result=mysql_query($sql);
+$result=mysqli_query($con,$sql);
 $row = mysql_fetch_array($result);
 
 	if($row)

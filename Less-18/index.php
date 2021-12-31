@@ -95,13 +95,13 @@ if(isset($_POST['uname']) && isset($_POST['passwd']))
 	
 	
 	$sql="SELECT  users.username, users.password FROM users WHERE users.username=$uname and users.password=$passwd ORDER BY users.id DESC LIMIT 0,1";
-	$result1 = mysql_query($sql);
+	$result1 = mysqli_query($con,$sql);
 	$row1 = mysql_fetch_array($result1);
 		if($row1)
 			{
 			echo '<font color= "#FFFF00" font size = 3 >';
 			$insert="INSERT INTO `security`.`uagents` (`uagent`, `ip_address`, `username`) VALUES ('$uagent', '$IP', $uname)";
-			mysql_query($insert);
+			mysqli_query($con,$insert);
 			//echo 'Your IP ADDRESS is: ' .$IP;
 			echo "</font>";
 			//echo "<br>";

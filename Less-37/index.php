@@ -64,9 +64,9 @@ if(isset($_POST['uname']) && isset($_POST['passwd']))
         //echo "Input password after addslashes is : ".$passwd;    
 
 	// connectivity 
-	mysql_query("SET NAMES gbk");
+	mysqli_query($con,"SET NAMES gbk");
 	@$sql="SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
-	$result=mysql_query($sql);
+	$result=mysqli_query($con,$sql);
 	$row = mysql_fetch_array($result);
 
 	if($row)

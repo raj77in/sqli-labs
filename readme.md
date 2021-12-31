@@ -1,3 +1,5 @@
+updated to use mysqli functions rather than mysql_ functions.
+
 README
 ================
 SQLI-LABS is a platform to learn SQLI 

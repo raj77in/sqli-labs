@@ -55,7 +55,7 @@ if(isset($_POST['uname']) && isset($_POST['passwd']))
 
 	// connectivity 
 	@$sql="SELECT username, password FROM users WHERE username=('$uname') and password=('$passwd') LIMIT 0,1";
-	$result=mysql_query($sql);
+	$result=mysqli_query($con,$sql);
 	$row = mysql_fetch_array($result);
 
 	if($row)

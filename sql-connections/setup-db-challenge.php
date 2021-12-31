@@ -12,7 +12,7 @@ $id = $_GET['id'];
 //echo $id;
 
 // Check connection
-@$con = mysql_connect($host,$dbuser,$dbpass);
+@$con = mysqli_connect($host,$dbuser,$dbpass);
 if (!$con)
 {
     echo "Failed to connect to MySQL: " . mysql_error();
@@ -21,7 +21,7 @@ if (!$con)
 
 //purging Old Database for challenges	
 	$sql="DROP DATABASE IF EXISTS $dbname1";
-	if (mysql_query($sql))
+	if (mysqli_query($con,$sql))
 		{echo "[*]...................Old database purged if exists"; echo "<br><br>\n";}
 	else 
 		{echo "[*]...................Error purging database: " . mysql_error(); echo "<br><br>\n";}
@@ -31,7 +31,7 @@ if (!$con)
 
 //Creating new database for challenges
 	$sql="CREATE database $dbname1 CHARACTER SET `gbk` ";
-	if (mysql_query($sql))
+	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New database successfully";echo "<br><br>\n";}
 	else 
 		{echo "[*]...................Error creating database: " . mysql_error();echo "<br><br>\n";}
@@ -48,7 +48,7 @@ $sql="CREATE TABLE IF NOT EXISTS $dbname1.$table
 		$secret_key CHAR(32) NOT NULL,
 		tryy INT(11) UNSIGNED NOT NULL DEFAULT 0 
 		)";
-	if (mysql_query($sql))
+	if (mysqli_query($con,$sql))
 		{echo "[*]...................Creating New Table '$table' successfully";echo "<br><br>\n";}
 	else 
 		{echo "[*]...................Error creating Table: " . mysql_error();echo "<br><br>\n";}
@@ -61,7 +61,7 @@ $hash = md5(rand(0,100000));
 
 //inserting Dummy data into table
 $sql="INSERT INTO $dbname1.$table VALUES (1, '$hash', '$sec_key', 0)";
-        if (mysql_query($sql))
+        if (mysqli_query($con,$sql))
 		{echo "[*]...................Inserted data correctly  into table '$table'";echo "<br><br>\n";}
 	else 
 		{echo "[*]...................Error inserting data: " . mysql_error();echo "<br><br>\n";}

@@ -97,7 +97,7 @@ if(!isset($_POST['answer_key']))
 			$id= '"'.$id.'"';
 			// Querry DB to get the correct output
 			$sql="SELECT * FROM security.users WHERE id=$id LIMIT 0,1";
-			$result=mysql_query($sql);
+			$result=mysqli_query($con,$sql);
 			$row = mysql_fetch_array($result);
 
 			if($row)
@@ -151,7 +151,7 @@ else
 	//Query table to verify your result
 	$sql="SELECT 1 FROM $table WHERE $col1= '$key'";
 	//echo "$sql";
-	$result=mysql_query($sql)or die("error in submittion of Key Solution".mysql_error());
+	$result=mysqli_query($con,$sql)or die("error in submittion of Key Solution".mysql_error());
 	 
 	$row = mysql_fetch_array($result);
 	

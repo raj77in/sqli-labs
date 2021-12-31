@@ -33,9 +33,9 @@ fclose($fp);
 
 // connectivity 
 
-mysql_query("SET NAMES gbk");
+mysqli_query($con,"SET NAMES gbk");
 $sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";
-$result=mysql_query($sql);
+$result=mysqli_query($con,$sql);
 $row = mysql_fetch_array($result);
 
 	if($row)

@@ -81,7 +81,7 @@ function check_input($value)
 
 		
 		$sql="SELECT  users.username, users.password FROM users WHERE users.username=$uname and users.password=$passwd ORDER BY users.id DESC LIMIT 0,1";
-		$result1 = mysql_query($sql);
+		$result1 = mysqli_query($con,$sql);
 		$row1 = mysql_fetch_array($result1);
 			if($row1)
 				{
@@ -145,7 +145,7 @@ else
 			$cookee1 = '"'. $cookee. '"';
 			echo "<br></font>";
 			$sql="SELECT * FROM users WHERE username=$cookee1 LIMIT 0,1";
-			$result=mysql_query($sql);
+			$result=mysqli_query($con,$sql);
 			if (!$result)
   				{
   				die('Issue with your mysql: ' . mysql_error());
